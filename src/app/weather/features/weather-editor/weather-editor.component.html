@@ -1,0 +1,28 @@
+<form [formGroup]="formGroup" (ngSubmit)="onFormSubmission()">
+  <mat-form-field>
+    <mat-label>Enter in summary</mat-label>
+    <input type="text" id="summary" matInput formControlName="summary" required />
+    <mat-error *ngIf="formGroup.controls.summary.invalid">Summary is Required</mat-error>
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label>Enter in date</mat-label>
+    <input matInput formControlName="date" required />
+    <mat-error *ngIf="formGroup.controls.date.invalid">date is invalid</mat-error>
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label>Enter in temperature c</mat-label>
+    <input matInput formControlName="temperatureC" required />
+    <mat-error *ngIf="formGroup.controls.temperatureC.errors?.['min']">
+      Temperature must be greater than 50
+    </mat-error>
+    <mat-error *ngIf="formGroup.controls.temperatureC.errors?.['max']">
+      Temperature must be less than 100
+    </mat-error>
+  </mat-form-field>
+  <br />
+  <br />
+  <br />
+  <button [disabled]="formGroup.invalid" submit>Submit</button>
+</form>

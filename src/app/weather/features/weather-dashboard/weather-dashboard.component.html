@@ -1,0 +1,6 @@
+<app-weather-card
+  *ngFor="let item of weatherService.weatherEntries(); trackBy: trackByItems"
+  [dummyObject]="item"
+  (onEditEvent)="onItemEdit($event)"
+  (onDeleteEvent)="onItemDelete($event)"
+/>
